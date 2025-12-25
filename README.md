@@ -14,7 +14,7 @@ Dự án này là một MVP end-to-end dùng **YOLO11n** để phát hiện ng�
 ### Cấu trúc thư mục (src/)
 - `main.py`: điểm chạy chính, nối toàn bộ pipeline.
 - `configs/config.yaml`: cấu hình chung (đường dẫn model, ngưỡng, Telegram, video input...).
-- `detection/yolo_detector.py`: lớp wrapper cho YOLOv8.
+- `detection/yolo_detector.py`: lớp wrapper cho YOLO11n.
 - `tracking/iou_tracker.py`: tracker đơn giản dựa trên IoU.
 - `events/fire_event_manager.py`: quản lý logic sự kiện cháy.
 - `notifiers/telegram_notifier.py`: gửi cảnh báo qua Telegram Bot.
