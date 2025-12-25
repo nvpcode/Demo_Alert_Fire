@@ -1,0 +1,46 @@
+yolo:
+  # Đường dẫn tới trọng số YOLOv8 đã được huấn luyện nhận diện lửa
+  # Có thể dùng model mặc định (ví dụ: yolov8n.pt) hoặc model custom của bạn
+  weights: "src/training_model/runs/detect/train/weights/best.pt"
+  conf_thres: 0.3
+  iou_thres: 0.5
+  device: "cpu"   # "cuda" nếu có GPU
+  fire_class_names: "fire"
+
+video:
+  # 0 = webcam, hoặc đường dẫn file video, hoặc URL RTSP
+  source: "video_test.mp4"
+  show_window: true
+  window_name: "Fire Drone Monitoring"
+  # Lưu video đã xử lý
+  save_processed: true
+  output_path: "outputs/video_processed/output.mp4"
+  # Nếu để null sẽ tự lấy fps từ nguồn, fallback 25
+  output_fps: null
+
+tracker:
+  # ByteTracker parameters - theo bytetrack.yaml
+  config: "src/tracking/bytetrack.yaml"  # file cấu hình ByteTrack cho YOLO.track
+  track_high_thresh: 0.25    # Ngưỡng cho detections chất lượng cao
+  track_low_thresh: 0.1       # Ngưỡng cho detections chất lượng thấp
+  new_track_thresh: 0.25      # Ngưỡng để tạo track mới
+  track_buffer: 30            # Số frame giữ track bị lost
+  match_thresh: 0.8           # Ngưỡng IoU để match
+  frame_rate: 30              # Frame rate của video
+
+event:
+  # Số frame tối thiểu một track phải tồn tại (lost == 0) để xác nhận là sự kiện cháy
+  min_frames: 10
+  # Thời gian nghỉ (giây) giữa 2 lần gửi cảnh báo cho cùng một track
+  cooldown_seconds: 60
+  # Thư mục lưu ảnh minh họa sự kiện
+  save_dir: "outputs/events"
+
+telegram:
+  # Token bot Telegram của bạn
+  bot_token: ""
+  # Chat ID (hoặc group ID) để gửi cảnh báo
+  chat_id: ""
+  enabled: true
+
+
