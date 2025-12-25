@@ -2,6 +2,9 @@
 
 Dự án này là một MVP end-to-end dùng **YOLO11n** để phát hiện ngọn lửa trên video quay từ drone và gửi cảnh báo qua **Telegram**.
 
+## Demo
+![Sample Image](demo.png)
+
 ### Thành phần chính
 - **YOLO11n**: phát hiện vùng cháy trên từng khung hình.
 - **Tracker (IoU / ByteTrack)**: theo dõi ID của vùng cháy qua nhiều khung hình.
